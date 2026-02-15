@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("USER") // USER, ADMIN
+  bookings  Booking[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Flight {
+  id            String   @id @default(cuid())
+  airline       String
+  flightNumber  String
+  origin        String
+  destination   String
+  departureTime DateTime
+  arrivalTime   DateTime
+  price         Decimal
+  bookings      Booking[]
+}
+
+model Tour {
+  id          String   @id @default(cuid())
+  title       String
+  location    String
+  duration    Int      // in minutes
+  price       Decimal
+  rating      Decimal  @default(0)
+  bookings    Booking[]
+}
+
+model Package {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  basePrice   Decimal
+  tours       Tour[]   // Implicit many-to-many
+  bookings    Booking[]
+}
+
+model Booking {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  flightId    String?
+  flight      Flight?  @relation(fields: [flightId], references: [id])
+  tourId      String?
+  tour        Tour?    @relation(fields: [tourId], references: [id])
+  packageId   String?
+  package     Package? @relation(fields: [packageId], references: [id])
+  status      String   @default("PENDING") // PENDING, CONFIRMED, CANCELLED
+  totalAmount Decimal
+  createdAt   DateTime @default(now())
+}
