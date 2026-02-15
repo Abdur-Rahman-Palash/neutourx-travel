@@ -237,7 +237,7 @@ export default function Hero() {
                         playsInline 
                         className="w-full h-full object-cover"
                     >
-                        <source src="/4003960-uhd_3840_2160_24fps.mp4" type="video/mp4" />
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
                     </video>
                 </div>
 
