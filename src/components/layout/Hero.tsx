@@ -40,11 +40,33 @@ export default function Hero() {
     const [toSuggestions, setToSuggestions] = useState<string[]>([]);
     const [showFromSuggestions, setShowFromSuggestions] = useState(false);
     const [showToSuggestions, setShowToSuggestions] = useState(false);
+    const [videoTestResult, setVideoTestResult] = useState<string>('');
     const heroRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const statsRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(heroRef, { once: false });
+
+    // Test if bgvideo.mp4 is accessible
+    useEffect(() => {
+        const testVideoFile = async () => {
+            try {
+                const response = await fetch('/bgvideo.mp4', { method: 'HEAD' });
+                if (response.ok) {
+                    setVideoTestResult('✅ bgvideo.mp4 is accessible!');
+                    console.log('✅ bgvideo.mp4 file found and accessible');
+                } else {
+                    setVideoTestResult('❌ bgvideo.mp4 not found');
+                    console.log('❌ bgvideo.mp4 file not accessible');
+                }
+            } catch (error) {
+                setVideoTestResult('❌ Error accessing bgvideo.mp4');
+                console.log('❌ Error checking bgvideo.mp4:', error);
+            }
+        };
+        
+        testVideoFile();
+    }, []);
 
     useEffect(() => {
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
@@ -220,77 +242,49 @@ export default function Hero() {
             ref={heroRef}
             className="relative min-h-screen flex flex-col items-center justify-center p-6 pt-32 md:pt-40 overflow-hidden"
         >
-            {/* Background Video Wrapper with Interactive Effects */}
-            <div className="absolute inset-0 bg-[#0B1C2D] z-0">
-                <div ref={videoRef} className="absolute inset-0 w-full h-full">
-                    {/* Animated gradient overlay that follows mouse */}
-                    <div 
-                        className="absolute inset-0 opacity-30"
-                        style={{
-                            background: `radial-gradient(circle 600px at ${mousePosition.x}% ${mousePosition.y}%, rgba(0, 209, 255, 0.15), transparent 40%)`,
-                        }}
-                    />
-                    <video 
-                        autoPlay 
-                        loop 
-                        muted 
-                        playsInline 
-                        className="w-full h-full object-cover"
-                    >
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
-                    </video>
-                </div>
-
-                {/* Enhanced Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0B1C2D]/95 via-[#0B1C2D]/70 to-[#0B1C2D]/85 z-10" />
+            {/* Background Video */}
+            <div className="absolute inset-0 z-0">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                    onError={(e) => {
+                        console.error('Video failed to load:', e);
+                    }}
+                    onCanPlay={() => {
+                        console.log('Video loaded successfully');
+                    }}
+                >
+                    <source src="/bgvideo.mp4" type="video/mp4" />
+                </video>
                 
-                {/* Floating particles effect */}
-                <div className="absolute inset-0 overflow-hidden z-5">
-                    {[...Array(20)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute w-1 h-1 bg-accent-cyan/30 rounded-full"
-                            animate={{
-                                y: [0, -100, 0],
-                                x: [0, Math.random() * 100 - 50, 0],
-                                opacity: [0, 1, 0],
-                            }}
-                            transition={{
-                                duration: 3 + Math.random() * 2,
-                                repeat: Infinity,
-                                delay: Math.random() * 2,
-                                ease: 'easeInOut',
-                            }}
-                            style={{
-                                left: `${Math.random() * 100}%`,
-                                top: `${Math.random() * 100}%`,
-                            }}
-                        />
-                    ))}
-                </div>
+                {/* Dark overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0B1C2D]/70 via-[#0B1C2D]/50 to-[#0B1C2D]/80" />
             </div>
 
             <div
                 ref={contentRef}
                 className="relative z-20 w-full max-w-6xl mx-auto flex flex-col items-center gap-10"
             >
-                {/* Enhanced Headlines with animations */}
-                <div className="text-center space-y-6">
-                    <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white leading-[1.1]">
-                        <span className="block">Travel</span>
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-blue-400 to-accent-gold animate-gradient">Smarter</span>
-                        <span className="block">Go Further</span>
-                    </h1>
-                    
-                    <motion.p 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
-                        className="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed"
-                    >
-                        Discover the world with intelligent flight searches, curated tours, and personalized packages designed just for you.
-                    </motion.p>
-                </div>
+            {/* Enhanced Headlines with animations */}
+            <div className="text-center space-y-6">
+                <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white leading-[1.1]">
+                    <span className="block">Travel</span>
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-blue-400 to-accent-gold animate-gradient">Smarter</span>
+                    <span className="block">Go Further</span>
+                </h1>
+                
+                <motion.p 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed"
+                >
+                    Discover the world with intelligent flight searches, curated tours, and personalized packages designed just for you.
+                </motion.p>
+            </div>
 
                 {/* Enhanced Search Module */}
                 <motion.div 
@@ -577,9 +571,10 @@ export default function Hero() {
     );
 }
 
+
 // Custom MapPin Icon for internal use to avoid conflicts if needed, or just use Lucide's MapPin
 function MapPinIcon({ className }: { className?: string }) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-    )
+    );
 }
