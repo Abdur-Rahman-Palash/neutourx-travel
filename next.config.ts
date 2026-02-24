@@ -27,7 +27,9 @@ const nextConfig: NextConfig = {
       tls: false,
     }
     return config
-  }
+  },
+  // Add support for dynamic routes
+  skipTrailingSlashRedirect: true,
 };
 
 export default nextConfig;

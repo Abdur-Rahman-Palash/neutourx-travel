@@ -1,5 +1,3 @@
-'use client';
-
 import {
     Clock,
     Shield,
@@ -13,6 +11,12 @@ import {
 } from 'lucide-react';
 import ProgressIndicator from '@/components/layout/ProgressIndicator';
 import { motion } from 'framer-motion';
+
+export async function generateStaticParams() {
+  return {
+    id: 'sample'
+  }
+}
 
 export default function FlightDetailsPage() {
     return (

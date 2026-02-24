@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
 export function useDynamicImport<T extends React.ComponentType<any>>(
@@ -35,7 +35,7 @@ export function useDynamicImport<T extends React.ComponentType<any>>(
     () => Promise.resolve({ default: Component }),
     {
       ...options,
-      loading: () => options.fallback || <div className="animate-pulse bg-gray-200 rounded-lg h-32" />
+      loading: () => options.fallback || React.createElement('div', { className: 'animate-pulse bg-gray-200 rounded-lg h-32' })
     }
   ) : null
 

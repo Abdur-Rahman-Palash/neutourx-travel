@@ -43,14 +43,13 @@ export default function TrustSection() {
                     {testimonials.map((t, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             transition={{ duration: 0.5, delay: i * 0.1 }}
                             viewport={{ once: true }}
                             className="bg-gray-50 p-8 rounded-2xl relative"
                         >
-                            <div className="absolute top-8 left-8 text-6xl text-accent-cyan/20 font-serif leading-none">“</div>
-                            <p className="text-primary font-medium text-lg leading-relaxed relative z-10 mb-6 pt-4">
+                            <p className="text-primary font-medium text-lg leading-relaxed relative z-10 mb-6">
                                 {t.text}
                             </p>
                             <div>

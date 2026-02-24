@@ -240,29 +240,9 @@ export default function Hero() {
     return (
         <section
             ref={heroRef}
-            className="relative min-h-screen flex flex-col items-center justify-center p-6 pt-32 md:pt-40 overflow-hidden"
+            className="relative min-h-screen flex flex-col items-center justify-center p-6 pt-32 md:pt-40 overflow-hidden bg-white"
         >
-            {/* Background Video */}
-            <div className="absolute inset-0 z-0">
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                    onError={(e) => {
-                        console.error('Video failed to load:', e);
-                    }}
-                    onCanPlay={() => {
-                        console.log('Video loaded successfully');
-                    }}
-                >
-                    <source src="/bgvideo.mp4" type="video/mp4" />
-                </video>
-                
-                {/* Dark overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0B1C2D]/70 via-[#0B1C2D]/50 to-[#0B1C2D]/80" />
-            </div>
+            {/* White background - no video or overlay needed */}
 
             <div
                 ref={contentRef}
@@ -270,7 +250,7 @@ export default function Hero() {
             >
             {/* Enhanced Headlines with animations */}
             <div className="text-center space-y-6">
-                <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-white leading-[1.1]">
+                <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter text-gray-900 leading-[1.1]">
                     <span className="block">Travel</span>
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan via-blue-400 to-accent-gold animate-gradient">Smarter</span>
                     <span className="block">Go Further</span>
@@ -280,7 +260,7 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3, duration: 0.8 }}
-                    className="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed"
+                    className="text-xl md:text-2xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed"
                 >
                     Discover the world with intelligent flight searches, curated tours, and personalized packages designed just for you.
                 </motion.p>
@@ -292,14 +272,14 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
                     className={cn(
-                        "w-full max-w-5xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl transition-all duration-500",
-                        isSearchFocused && "bg-white/10 border-accent-cyan/30 shadow-[0_0_40px_rgba(0,209,255,0.2)]"
+                        "w-full max-w-5xl bg-gray-50 border border-gray-200 rounded-3xl p-6 md:p-8 shadow-2xl transition-all duration-500",
+                        isSearchFocused && "bg-white border-accent-cyan/50 shadow-[0_0_40px_rgba(0,209,255,0.2)]"
                     )}
                     onFocus={() => setIsSearchFocused(true)}
                     onBlur={() => setIsSearchFocused(false)}
                 >
                     {/* Enhanced Tabs with descriptions */}
-                    <div className="flex gap-2 md:gap-6 border-b border-white/10 pb-6 mb-8 overflow-x-auto no-scrollbar">
+                    <div className="flex gap-2 md:gap-6 border-b border-gray-200 pb-6 mb-8 overflow-x-auto no-scrollbar">
                         {searchTabs.map((tab) => (
                             <motion.button
                                 key={tab.id}
@@ -308,7 +288,7 @@ export default function Hero() {
                                 whileTap={{ scale: 0.95 }}
                                 className={cn(
                                     "relative flex flex-col items-center gap-1 pb-3 px-3 text-sm md:text-base font-medium transition-colors whitespace-nowrap min-w-[80px]",
-                                    activeTab === tab.id ? "text-white" : "text-gray-400 hover:text-gray-200"
+                                    activeTab === tab.id ? "text-gray-900" : "text-gray-500 hover:text-gray-700"
                                 )}
                             >
                                 <motion.div
@@ -338,7 +318,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
-                            className="text-center text-gray-400 text-sm mb-6"
+                            className="text-center text-gray-600 text-sm mb-6"
                         >
                             {searchTabs.find(tab => tab.id === activeTab)?.description}
                         </motion.p>
@@ -364,7 +344,7 @@ export default function Hero() {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                         {/* From */}
                         <div className="md:col-span-3 space-y-2 group relative">
-                            <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">From</label>
+                            <label className="text-xs uppercase tracking-wider text-gray-600 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">From</label>
                             <div className="relative">
                                 <MapPinIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                                 <input
@@ -374,19 +354,19 @@ export default function Hero() {
                                     onChange={(e) => handleSearchInputChange('from', e.target.value)}
                                     onFocus={() => setShowFromSuggestions(true)}
                                     onBlur={() => setTimeout(() => setShowFromSuggestions(false), 200)}
-                                    className="w-full bg-white/5 border border-white/10 rounded-lg py-4 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all font-medium"
+                                    className="w-full bg-white border border-gray-300 rounded-lg py-4 pl-12 pr-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all font-medium"
                                 />
                                 
                                 {/* Suggestions Dropdown */}
                                 {showFromSuggestions && fromSuggestions.length > 0 && (
-                                    <div className="absolute top-full left-0 right-0 mt-2 bg-primary/95 backdrop-blur-xl border border-white/20 rounded-lg shadow-2xl max-h-60 overflow-y-auto z-50">
+                                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-2xl max-h-60 overflow-y-auto z-50">
                                         {fromSuggestions.map((suggestion, index) => (
                                             <motion.button
                                                 key={index}
                                                 whileHover={{ scale: 1.02, backgroundColor: 'rgba(0,209,255,0.1)' }}
                                                 whileTap={{ scale: 0.98 }}
                                                 onClick={() => selectSuggestion('from', suggestion)}
-                                                className="w-full text-left px-4 py-3 text-white hover:bg-accent-cyan/10 transition-colors flex items-center gap-3"
+                                                className="w-full text-left px-4 py-3 text-gray-900 hover:bg-gray-100 transition-colors flex items-center gap-3"
                                             >
                                                 <MapPinIcon className="w-4 h-4 text-accent-cyan" />
                                                 <span className="text-sm">{suggestion}</span>
@@ -399,7 +379,7 @@ export default function Hero() {
 
                         {/* To */}
                         <div className="md:col-span-3 space-y-2 group relative">
-                            <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">To</label>
+                            <label className="text-xs uppercase tracking-wider text-gray-600 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">To</label>
                             <div className="relative">
                                 <MapPinIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                                 <input
@@ -409,19 +389,19 @@ export default function Hero() {
                                     onChange={(e) => handleSearchInputChange('to', e.target.value)}
                                     onFocus={() => setShowToSuggestions(true)}
                                     onBlur={() => setTimeout(() => setShowToSuggestions(false), 200)}
-                                    className="w-full bg-white/5 border border-white/10 rounded-lg py-4 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all font-medium"
+                                    className="w-full bg-white border border-gray-300 rounded-lg py-4 pl-12 pr-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all font-medium"
                                 />
                                 
                                 {/* Suggestions Dropdown */}
                                 {showToSuggestions && toSuggestions.length > 0 && (
-                                    <div className="absolute top-full left-0 right-0 mt-2 bg-primary/95 backdrop-blur-xl border border-white/20 rounded-lg shadow-2xl max-h-60 overflow-y-auto z-50">
+                                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-2xl max-h-60 overflow-y-auto z-50">
                                         {toSuggestions.map((suggestion, index) => (
                                             <motion.button
                                                 key={index}
                                                 whileHover={{ scale: 1.02, backgroundColor: 'rgba(0,209,255,0.1)' }}
                                                 whileTap={{ scale: 0.98 }}
                                                 onClick={() => selectSuggestion('to', suggestion)}
-                                                className="w-full text-left px-4 py-3 text-white hover:bg-accent-cyan/10 transition-colors flex items-center gap-3"
+                                                className="w-full text-left px-4 py-3 text-gray-900 hover:bg-gray-100 transition-colors flex items-center gap-3"
                                             >
                                                 <MapPinIcon className="w-4 h-4 text-accent-cyan" />
                                                 <span className="text-sm">{suggestion}</span>
@@ -435,7 +415,7 @@ export default function Hero() {
                         {/* Dates (Depart/Return) */}
                         <div className="md:col-span-3 grid grid-cols-2 gap-2">
                             <div className="space-y-2 group">
-                                <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">Depart</label>
+                                <label className="text-xs uppercase tracking-wider text-gray-600 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">Depart</label>
                                 <div className="relative">
                                     <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                                     <input
@@ -443,14 +423,14 @@ export default function Hero() {
                                         placeholder="Add Date"
                                         value={searchData.depart}
                                         onChange={(e) => handleSearchInputChange('depart', e.target.value)}
-                                        className="w-full bg-white/5 border border-white/10 rounded-lg py-4 pl-10 pr-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all text-sm font-medium"
+                                        className="w-full bg-white border border-gray-300 rounded-lg py-4 pl-10 pr-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all text-sm font-medium"
                                         onFocus={(e) => e.target.type = 'date'}
                                         onBlur={(e) => e.target.type = 'text'}
                                     />
                                 </div>
                             </div>
                             <div className="space-y-2 group">
-                                <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">Return</label>
+                                <label className="text-xs uppercase tracking-wider text-gray-600 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">Return</label>
                                 <div className="relative">
                                     <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                                     <input
@@ -458,7 +438,7 @@ export default function Hero() {
                                         placeholder="Add Date"
                                         value={searchData.return}
                                         onChange={(e) => handleSearchInputChange('return', e.target.value)}
-                                        className="w-full bg-white/5 border border-white/10 rounded-lg py-4 pl-10 pr-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all text-sm font-medium"
+                                        className="w-full bg-white border border-gray-300 rounded-lg py-4 pl-10 pr-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all text-sm font-medium"
                                         onFocus={(e) => e.target.type = 'date'}
                                         onBlur={(e) => e.target.type = 'text'}
                                     />
@@ -469,13 +449,13 @@ export default function Hero() {
                         {/* Travelers & Class */}
                         <div className="md:col-span-3 grid grid-cols-2 gap-2">
                             <div className="space-y-2 group">
-                                <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">Travelers</label>
+                                <label className="text-xs uppercase tracking-wider text-gray-600 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">Travelers</label>
                                 <div className="relative">
                                     <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                                     <select 
                                         value={searchData.travelers}
                                         onChange={(e) => handleSearchInputChange('travelers', e.target.value)}
-                                        className="w-full bg-white/5 border border-white/10 rounded-lg py-4 pl-9 pr-2 text-white focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all text-sm appearance-none font-medium cursor-pointer [&>option]:bg-background"
+                                        className="w-full bg-white border border-gray-300 rounded-lg py-4 pl-9 pr-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all text-sm appearance-none font-medium cursor-pointer [&>option]:bg-white"
                                     >
                                         <option>1</option>
                                         <option>2</option>
@@ -484,13 +464,13 @@ export default function Hero() {
                                 </div>
                             </div>
                             <div className="space-y-2 group">
-                                <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">Class</label>
+                                <label className="text-xs uppercase tracking-wider text-gray-600 font-semibold pl-1 group-focus-within:text-accent-cyan transition-colors">Class</label>
                                 <div className="relative">
                                     <UserCheck className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                                     <select 
                                         value={searchData.class}
                                         onChange={(e) => handleSearchInputChange('class', e.target.value)}
-                                        className="w-full bg-white/5 border border-white/10 rounded-lg py-4 pl-9 pr-2 text-white focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all text-sm appearance-none font-medium cursor-pointer [&>option]:bg-background"
+                                        className="w-full bg-white border border-gray-300 rounded-lg py-4 pl-9 pr-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan/50 transition-all text-sm appearance-none font-medium cursor-pointer [&>option]:bg-white"
                                     >
                                         <option>Economy</option>
                                         <option>Business</option>
@@ -503,7 +483,7 @@ export default function Hero() {
 
                     {/* Enhanced Search Button & Trust Badges */}
                     <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div className="flex items-center gap-4 md:gap-6 text-sm text-gray-400 order-2 md:order-1 flex-wrap justify-center">
+                        <div className="flex items-center gap-4 md:gap-6 text-sm text-gray-600 order-2 md:order-1 flex-wrap justify-center">
                             <motion.span 
                                 whileHover={{ scale: 1.05 }}
                                 className="flex items-center gap-2 cursor-default"
@@ -560,7 +540,7 @@ export default function Hero() {
                             <div className="text-2xl md:text-3xl font-black text-accent-cyan mb-1">
                                 {stat.value}
                             </div>
-                            <div className="text-xs md:text-sm text-gray-400 uppercase tracking-wider">
+                            <div className="text-xs md:text-sm text-gray-600 uppercase tracking-wider">
                                 {stat.label}
                             </div>
                         </motion.div>
