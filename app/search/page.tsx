@@ -43,7 +43,7 @@ export default function SearchPage() {
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
-      const filtered = allResults.filter(
+      const filtered: SearchResult[] = allResults.filter(
         (result) =>
           result.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           result.type.toLowerCase().includes(searchQuery.toLowerCase())
