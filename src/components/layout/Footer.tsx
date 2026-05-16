@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
-import { Twitter, Instagram, Linkedin, Facebook, Globe, CreditCard, Shield, Headphones, ChevronDown } from 'lucide-react';
+import { Globe, CreditCard, Shield, Headphones, ChevronDown, Globe2, ExternalLink, Link2, Mail } from 'lucide-react';
 
 const footerLinks = [
     {
@@ -45,10 +45,10 @@ const footerLinks = [
 ];
 
 const socialIcons = [
-    { Icon: Twitter, href: "#" },
-    { Icon: Instagram, href: "#" },
-    { Icon: Linkedin, href: "#" },
-    { Icon: Facebook, href: "#" }
+    { Icon: Globe2, href: "#" },
+    { Icon: ExternalLink, href: "#" },
+    { Icon: Link2, href: "#" },
+    { Icon: Mail, href: "#" }
 ];
 
 const paymentIcons = [

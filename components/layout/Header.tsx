@@ -1,6 +1,5 @@
-﻿'use client';
+'use client';
 
-import { motion } from 'framer-motion';
 import { Menu, Search, User, Heart, ShoppingCart, Sun, Moon } from 'lucide-react';
 import { useAppStore } from '@/store/appStore';
 import { useRouter } from 'next/navigation';
@@ -12,9 +11,7 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+    <header
       className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/90"
       style={{
         backdropFilter: 'blur(10px)',
@@ -110,6 +107,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

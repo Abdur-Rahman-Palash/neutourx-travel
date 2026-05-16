@@ -7,7 +7,7 @@ import { SectionSkeleton } from '@/components/ui/SectionSkeleton';
 
 export default function NewsletterCTA() {
   const titleRef = useTextSplitReveal(0.03);
-  const contentRef = useRevealEffect();
+  const contentRef = useRevealEffect<HTMLFormElement>();
   const isLoading = false;
 
   if (isLoading) {

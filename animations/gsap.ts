@@ -134,11 +134,11 @@ export function useFadeInOnScroll(offset = '80%') {
   return ref;
 }
 
-export function useRevealEffect(offset = '85%') {
-  const ref = useRef<HTMLDivElement>(null);
+export function useRevealEffect<T extends HTMLElement = HTMLDivElement>(offset = '85%') {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
-    const element = ref.current;
+    const element = ref.current as unknown as HTMLElement | null;
     if (!element) return;
 
     gsap.fromTo(
@@ -227,11 +227,11 @@ export function useScrollStagger(selector = '.stagger-item', delay = 0.14) {
   return ref;
 }
 
-export function useSectionTransition() {
-  const ref = useRef<HTMLDivElement>(null);
+export function useSectionTransition<T extends HTMLElement = HTMLDivElement>() {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
-    const element = ref.current;
+    const element = ref.current as unknown as HTMLElement | null;
     if (!element) return;
 
     gsap.fromTo(

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { PackageData, BuilderStep, steps } from '@/components/builder/constants';
-import BuilderProgress from '@/components/builder/BuilderProgress';
+import { PackageData, BuilderStep, steps } from '../../components/builder/constants';
+import BuilderProgress from '../../components/builder/BuilderProgress';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ArrowRight, ArrowLeft } from 'lucide-react';
 import Image from 'next/image';

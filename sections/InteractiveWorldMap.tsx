@@ -39,7 +39,7 @@ export default function InteractiveWorldMap() {
         <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-start">
           <motion.div
             ref={mapRef}
-            className="relative h-[640px] rounded-[2rem] overflow-hidden border border-white/10 bg-[url('/world-map.jpg')] bg-cover bg-center shadow-[0_40px_120px_rgba(15,23,42,0.25)]"
+            className="relative h-[640px] rounded-[2rem] overflow-hidden border border-white/10 bg-[url('/globe.svg')] bg-cover bg-center shadow-[0_40px_120px_rgba(15,23,42,0.25)]"
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}

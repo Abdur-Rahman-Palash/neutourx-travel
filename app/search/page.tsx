@@ -4,9 +4,17 @@ import { motion } from 'framer-motion';
 import { Search, MapPin, X } from 'lucide-react';
 import { useState } from 'react';
 
+type SearchResult = {
+  id: number;
+  type: string;
+  title: string;
+  price: string;
+  icon: string;
+};
+
 export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [searched, setSearched] = useState(false);
 
   const containerVariants = {
@@ -22,7 +30,7 @@ export default function SearchPage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  const allResults = [
+  const allResults: SearchResult[] = [
     { id: 1, type: 'Flight', title: 'New York to Paris', price: '$450', icon: '✈️' },
     { id: 2, type: 'Hotel', title: 'Luxury Grand Hotel - Paris', price: '$320/night', icon: '🏨' },
     { id: 3, type: 'Package', title: 'Paris Romantic Escape', price: '$1,299', icon: '📦' },

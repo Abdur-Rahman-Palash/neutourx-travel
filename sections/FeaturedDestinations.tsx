@@ -9,7 +9,7 @@ const destinations = [
   {
     id: 1,
     name: 'Paris, France',
-    image: '/paris.jpg', // placeholder
+    image: '/hotel.jpg',
     rating: 4.8,
     price: 'From $1,299',
     description: 'City of Light and Love'
@@ -17,7 +17,7 @@ const destinations = [
   {
     id: 2,
     name: 'Tokyo, Japan',
-    image: '/tokyo.jpg',
+    image: '/flight.jpg',
     rating: 4.9,
     price: 'From $1,599',
     description: 'Modern meets Traditional'
@@ -25,7 +25,7 @@ const destinations = [
   {
     id: 3,
     name: 'Bali, Indonesia',
-    image: '/bali.jpg',
+    image: '/dubai.jpg',
     rating: 4.7,
     price: 'From $899',
     description: 'Tropical Paradise'
@@ -33,7 +33,7 @@ const destinations = [
   {
     id: 4,
     name: 'New York, USA',
-    image: '/nyc.jpg',
+    image: '/hotel.jpg',
     rating: 4.6,
     price: 'From $1,099',
     description: 'The City That Never Sleeps'
@@ -82,6 +82,7 @@ export default function FeaturedDestinations() {
                   src={destination.image}
                   alt={destination.name}
                   fill
+                  sizes="(max-width: 768px) 100vw, 25vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                   loading="lazy"
                 />
