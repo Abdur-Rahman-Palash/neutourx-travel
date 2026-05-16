@@ -92,41 +92,7 @@ export default function ValueProposition() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative py-24 md:py-32 bg-gradient-to-br from-primary via-primary/95 to-primary/90 overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: `radial-gradient(circle at 25% 25%, #00D1FF 0%, transparent 50%), 
-                                   radial-gradient(circle at 75% 75%, #00D1FF 0%, transparent 50%)`,
-                    backgroundSize: '60px 60px'
-                }} />
-            </div>
-            
-            {/* Floating Elements */}
-            <div className="absolute inset-0 overflow-hidden">
-                {[...Array(6)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute w-2 h-2 bg-accent-cyan/20 rounded-full"
-                        animate={{
-                            y: [0, -50, 0],
-                            x: [0, Math.random() * 30 - 15, 0],
-                            opacity: [0, 1, 0],
-                        }}
-                        transition={{
-                            duration: 4 + Math.random() * 2,
-                            repeat: Infinity,
-                            delay: Math.random() * 2,
-                            ease: 'easeInOut',
-                        }}
-                        style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                        }}
-                    />
-                ))}
-            </div>
-
+        <section ref={sectionRef} className="relative py-24 md:py-32 bg-gradient-to-br from-primary via-primary/95 to-primary/90">
             <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
                 {/* Enhanced Title */}
                 <div className="text-center mb-20">
@@ -155,7 +121,7 @@ export default function ValueProposition() {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+                        className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
                     >
                         Experience travel reimagined with cutting-edge technology, personalized service, and unforgettable journeys.
                     </motion.p>

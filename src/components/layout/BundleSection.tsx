@@ -106,9 +106,6 @@ export default function BundleSection() {
                                 className="object-cover"
                             />
                         </div>
-                        {/* Decorative Circle */}
-                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent-gold/20 rounded-full blur-3xl z-0" />
-                        <div className="absolute top-10 right-10 w-60 h-60 bg-accent-cyan/10 rounded-full blur-3xl z-0" />
                     </div>
 
                     {/* Right Column - Content */}

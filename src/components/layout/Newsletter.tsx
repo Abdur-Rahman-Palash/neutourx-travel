@@ -20,41 +20,7 @@ export default function Newsletter() {
     };
 
     return (
-        <section ref={ref} className="relative py-24 md:py-32 bg-gradient-to-b from-primary via-primary/95 to-primary/90 overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: `radial-gradient(circle at 25% 25%, #00D1FF 0%, transparent 50%), 
-                                   radial-gradient(circle at 75% 75%, #00D1FF 0%, transparent 50%)`,
-                    backgroundSize: '80px 80px'
-                }} />
-            </div>
-            
-            {/* Floating Elements */}
-            <div className="absolute inset-0 overflow-hidden">
-                {[...Array(6)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute w-1 h-1 bg-accent-cyan/20 rounded-full"
-                        animate={{
-                            y: [0, -40, 0],
-                            x: [0, Math.random() * 20 - 10, 0],
-                            opacity: [0, 1, 0],
-                        }}
-                        transition={{
-                            duration: 3 + Math.random() * 2,
-                            repeat: Infinity,
-                            delay: Math.random() * 2,
-                            ease: 'easeInOut',
-                        }}
-                        style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                        }}
-                    />
-                ))}
-            </div>
-
+        <section ref={ref} className="relative py-24 md:py-32 bg-gradient-to-b from-primary via-primary/95 to-primary/90">
             <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -170,6 +136,14 @@ export default function Newsletter() {
                     >
                         By joining, you agree to our Terms of Service and Privacy Policy. Unsubscribe anytime.
                     </motion.p>
+
+                    {/* Bottom Gradient Line */}
+                    <motion.div
+                        initial={{ opacity: 0, scaleX: 0 }}
+                        animate={isInView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
+                        transition={{ delay: 0.8, duration: 0.8 }}
+                        className="mt-16 h-1 bg-gradient-to-r from-transparent via-accent-cyan to-transparent max-w-md mx-auto"
+                    />
                 </motion.div>
             </div>
         </section>

@@ -1,0 +1,12 @@
+export { default as Hero } from './Hero';
+export { default as TravelPackages } from './TravelPackages';
+export { default as FeaturedDestinations } from './FeaturedDestinations';
+export { default as WhyChooseUs } from './WhyChooseUs';
+export { default as Testimonials } from './Testimonials';
+export { default as InteractiveWorldMap } from './InteractiveWorldMap';
+export { default as TravelInspiration } from './TravelInspiration';
+export { default as AITravelPlanner } from './AITravelPlanner';
+export { default as TravelBlogs } from './TravelBlogs';
+export { default as MobileAppPromotion } from './MobileAppPromotion';
+export { default as NewsletterCTA } from './NewsletterCTA';
+export { default as PremiumFooter } from './PremiumFooter';

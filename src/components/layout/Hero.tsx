@@ -240,7 +240,7 @@ export default function Hero() {
     return (
         <section
             ref={heroRef}
-            className="relative min-h-screen flex flex-col items-center justify-center p-6 pt-32 md:pt-40 overflow-hidden bg-white"
+            className="relative min-h-[50vh] flex flex-col items-center justify-center p-6 pt-32 md:pt-40 overflow-hidden bg-white"
         >
             {/* White background - no video or overlay needed */}
 
