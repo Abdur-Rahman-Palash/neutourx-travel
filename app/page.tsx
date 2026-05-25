@@ -13,22 +13,10 @@ import NewsletterCTA from '@/sections/NewsletterCTA';
 import PremiumFooter from '@/sections/PremiumFooter';
 import Footer from '@/components/layout/Footer';
 
-const EnterpriseSuite = dynamic(
-  () => import('@/sections/EnterpriseSuite'),
-  {
-    loading: () => (
-      <div className="py-16 text-center text-slate-500 dark:text-slate-400">
-        Loading premium travel management...
-      </div>
-    ),
-  },
-);
-
 export default function Home() {
   return (
     <div className="min-h-screen overflow-hidden">
       <Hero />
-      <EnterpriseSuite />
       <TravelPackages />
       <FeaturedDestinations />
       <InteractiveWorldMap />

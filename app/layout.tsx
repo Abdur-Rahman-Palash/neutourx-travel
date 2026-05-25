@@ -5,7 +5,6 @@ import Header from '@/components/layout/Header';
 import Sidebar from '@/components/layout/Sidebar';
 import SmoothScroll from '@/components/ui/SmoothScroll';
 import PageTransition from '@/components/ui/PageTransition';
-import { ThemeProvider } from '@/providers';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,14 +39,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>
-          <PageTransition />
-          <SmoothScroll>
-            <Header />
-            <Sidebar />
-            <main className="flex-1 pt-16">{children}</main>
-          </SmoothScroll>
-        </ThemeProvider>
+        <PageTransition />
+        <SmoothScroll>
+          <Header />
+          <Sidebar />
+          <main className="flex-1 pt-16">{children}</main>
+        </SmoothScroll>
       </body>
     </html>
   );

@@ -45,13 +45,13 @@ export default function FeaturedDestinations() {
   const revealRef = useRevealEffect();
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: 'var(--color-surface-secondary)' }}>
+    <section className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
         <div ref={fadeRef} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             Featured Destinations
           </h2>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
+          <p className="text-xl max-w-2xl mx-auto text-text-secondary">
             Discover handpicked destinations that offer unforgettable experiences
           </p>
         </div>
@@ -68,11 +68,7 @@ export default function FeaturedDestinations() {
                 ease: [0.25, 0.46, 0.45, 0.94] // Custom cubic-bezier easing
               }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-              style={{
-                backgroundColor: 'var(--color-surface)',
-                boxShadow: 'var(--shadow-lg)',
-              }}
+              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-surface border border-border"
               role="article"
               aria-labelledby={`destination-${destination.id}`}
             >

@@ -26,7 +26,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.variable,
-          "antialiased min-h-screen bg-background text-foreground"
+          "antialiased min-h-screen bg-background text-foreground transition-colors duration-300"
         )}
       >
         <Header />

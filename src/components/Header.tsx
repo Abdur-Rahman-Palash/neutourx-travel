@@ -113,8 +113,8 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled 
-          ? "bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800 backdrop-blur-xl border-b border-gray-200 shadow-lg" 
-          : "bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800 border-b border-gray-200"
+          ? "bg-background/80 backdrop-blur-xl border-b border-gray-200/20 shadow-lg" 
+          : "bg-background/40 backdrop-blur-md border-b border-gray-200/10"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -129,14 +129,14 @@ export function Header() {
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-accent-cyan to-blue-500 rounded-xl flex items-center justify-center">
                 <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
-              <span className="text-lg sm:text-xl font-black tracking-tighter text-white">NEUTOURX</span>
+              <span className="text-lg sm:text-xl font-black tracking-tighter text-foreground">NEUTOURX</span>
             </motion.div>
 
             {/* Explore Dropdown - Visible on desktop */}
             <div className="relative">
               <motion.button
                 onClick={() => setIsExploreOpen(!isExploreOpen)}
-                className="flex items-center gap-2 text-white hover:text-accent-cyan transition-colors text-sm sm:text-base lg:text-lg font-medium"
+                className="flex items-center gap-2 text-foreground hover:text-accent-cyan transition-colors text-sm sm:text-base lg:text-lg font-medium"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -183,7 +183,7 @@ export function Header() {
                 <motion.a
                   key={index}
                   href={item.href}
-                  className="flex items-center gap-2 text-white hover:text-accent-cyan transition-colors text-lg font-medium"
+                  className="flex items-center gap-2 text-foreground hover:text-accent-cyan transition-colors text-lg font-medium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -217,13 +217,12 @@ export function Header() {
               <span className="text-sm font-medium hidden md:inline">List Property</span>
             </motion.button>
 
-            
             {/* Search - Always visible */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center gap-1 sm:gap-2 p-2 text-white hover:text-accent-cyan transition-colors"
+              className="flex items-center gap-1 sm:gap-2 p-2 text-foreground hover:text-accent-cyan transition-colors"
             >
               <Search className="w-4 h-4 sm:w-5 sm:h-5" />
             </motion.button>
@@ -233,7 +232,7 @@ export function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsNotificationsOpen(true)}
-              className="flex items-center gap-1 sm:gap-2 p-2 text-white hover:text-accent-cyan transition-colors relative"
+              className="flex items-center gap-1 sm:gap-2 p-2 text-foreground hover:text-accent-cyan transition-colors relative"
             >
               <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>

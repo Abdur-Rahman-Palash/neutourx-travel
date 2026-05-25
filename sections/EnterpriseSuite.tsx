@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Heart, ShieldCheck, Sparkles, Star, Bell, MapPin, ArrowRight, UserPlus } from 'lucide-react';
-import { useTheme } from '@/providers';
 
 const premiumMetrics = [
   { key: 'journeys', label: 'Booked Journeys', value: 2150, suffix: '+' },
@@ -40,13 +39,19 @@ function formatMetric(value: number, suffix: string) {
 }
 
 export default function EnterpriseSuite() {
-  const { theme } = useTheme();
   const [stats, setStats] = useState({ journeys: 0, satisfaction: 0, savings: 0 });
   const [favoriteTrips, setFavoriteTrips] = useState<string[]>([]);
   const [selectedTrips, setSelectedTrips] = useState<string[]>([]);
   const [activeNotice, setActiveNotice] = useState(0);
+  const [isConciergeOpen, setIsConciergeOpen] = useState(false);
 
   const loyaltyProgress = 72;
+
+  const handleConciergeRequest = () => {
+    setIsConciergeOpen(true);
+    // You can add logic here to open a chat, send an email, or show a success message
+    alert('Thank you for your interest! Our premium concierge team will contact you shortly to assist with your upgrades and itinerary planning.');
+  };
 
   useEffect(() => {
     const targets = { journeys: 2150, satisfaction: 98, savings: 32 };
@@ -293,7 +298,7 @@ export default function EnterpriseSuite() {
                   <h3 className="mt-3 text-2xl font-semibold">Drive loyalty at every touchpoint.</h3>
                 </div>
                 <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200">
-                  {theme === 'dark' ? 'Dark mode active' : 'Light mode active'}
+                  Dark mode active
                 </span>
               </div>
               <div className="mt-6 rounded-3xl bg-slate-800/80 p-4">
@@ -336,9 +341,10 @@ export default function EnterpriseSuite() {
         </div>
         <button
           type="button"
+          onClick={handleConciergeRequest}
           className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-cyan-500 dark:text-slate-950 dark:hover:bg-cyan-400"
         >
-          Request concierge
+          {isConciergeOpen ? 'Request Sent' : 'Request concierge'}
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>

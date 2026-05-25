@@ -36,17 +36,16 @@ export default function Testimonials() {
   const titleRef = useTextReveal();
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: 'var(--color-surface)' }}>
+    <section className="py-20 px-4 bg-surface">
       <div className="max-w-7xl mx-auto">
         <div ref={fadeRef} className="text-center mb-16">
           <h2
             ref={titleRef}
-            className="text-4xl md:text-5xl font-bold mb-4"
-            style={{ color: 'var(--color-text)' }}
+            className="text-4xl md:text-5xl font-bold mb-4 text-foreground"
           >
             What Our Travelers Say
           </h2>
-          <p className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>
+          <p className="text-xl text-text-secondary">
             Real experiences from real travelers who chose NEUTOURX
           </p>
         </div>
@@ -55,52 +54,27 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.2,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="relative p-8 rounded-2xl"
-              style={{
-                backgroundColor: 'var(--color-surface-secondary)',
-                boxShadow: 'var(--shadow-lg)',
-              }}
-              role="article"
-              aria-labelledby={`testimonial-${testimonial.id}`}
+              className="p-8 bg-surface-secondary rounded-2xl border border-border shadow-sm hover:shadow-md transition-all duration-300"
             >
-              <Quote
-                className="absolute top-4 right-4 h-8 w-8 opacity-20"
-                style={{ color: 'var(--color-accent)' }}
-              />
-
-              <div className="flex items-center mb-4">
-                <div className="flex text-yellow-400">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                ))}
               </div>
-
-              <blockquote className="text-lg mb-6 italic" style={{ color: 'var(--color-text)' }}>
-                &ldquo;{testimonial.text}&rdquo;
-              </blockquote>
-
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-gray-300 rounded-full mr-4" />
+              <p className="text-foreground italic mb-6 leading-relaxed">
+                "{testimonial.text}"
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-border">
+                  <Quote className="w-6 h-6 text-primary" />
+                </div>
                 <div>
-                  <h4
-                    id={`testimonial-${testimonial.id}`}
-                    className="font-semibold"
-                    style={{ color: 'var(--color-text)' }}
-                  >
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                    {testimonial.location}
-                  </p>
+                  <h4 className="font-bold text-foreground">{testimonial.name}</h4>
+                  <p className="text-sm text-text-secondary">{testimonial.location}</p>
                 </div>
               </div>
             </motion.div>

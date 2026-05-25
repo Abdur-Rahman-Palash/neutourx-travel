@@ -1,14 +1,12 @@
 'use client';
 
-import { Menu, Search, User, Heart, ShoppingCart, Sun, Moon } from 'lucide-react';
+import { Menu, Search, User, Heart, ShoppingCart } from 'lucide-react';
 import { useAppStore } from '@/store/appStore';
 import { useRouter } from 'next/navigation';
-import { useTheme } from '@/providers';
 
 export default function Header() {
   const { toggleSidebar } = useAppStore();
   const router = useRouter();
-  const { theme, toggleTheme } = useTheme();
 
   return (
     <header
@@ -96,13 +94,6 @@ export default function Header() {
               aria-label="Account"
             >
               <User className="h-5 w-5" />
-            </button>
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 dark:hover:bg-slate-800"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
           </div>
         </div>

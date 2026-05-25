@@ -2,17 +2,17 @@
 
 :root {
   /* Design Tokens */
-  --color-primary: #0f172a; /* Deep Navy */
-  --color-secondary: #1e293b; /* Navy Light */
-  --color-accent: #3b82f6; /* Blue */
-  --color-accent-light: #60a5fa; /* Light Blue */
-  --color-surface: #ffffff; /* Premium White */
-  --color-surface-secondary: #f8fafc; /* Light Gray */
-  --color-text: #0f172a; /* Dark Text */
-  --color-text-secondary: #64748b; /* Gray Text */
-  --color-text-light: #f1f5f9; /* Light Text */
-  --color-border: #e2e8f0; /* Border */
-  --color-border-light: #f1f5f9; /* Light Border */
+  --color-primary: #FFFFFF;
+  --color-secondary: #CBD5E1;
+  --color-accent: #00D1FF;
+  --color-accent-light: #60a5fa;
+  --color-surface: #0B1C2D;
+  --color-surface-secondary: #111827;
+  --color-text: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
+  --color-text-light: #f1f5f9;
+  --color-border: #334155;
+  --color-border-light: #475569;
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -42,29 +42,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-surface: #0f172a;
-    --color-surface-secondary: #1e293b;
-    --color-text: #f8fafc;
-    --color-text-secondary: #cbd5e1;
-    --color-border: #334155;
-    --color-border-light: #475569;
-  }
-}
-
-.theme-dark,
-.theme-dark body {
-  --color-surface: #0f172a;
-  --color-surface-secondary: #111827;
-  --color-text: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-border: #334155;
-  --color-border-light: #475569;
-  --background: var(--color-surface);
-  --foreground: var(--color-text);
 }
 
 * {
